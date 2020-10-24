@@ -13,20 +13,20 @@ import java.util.List;
 public class LinuxIdleTimeUtils extends IdleTimeUtils {
 
     interface Xss extends Library {
-        Xss INSTANCE = (Xss) Native.loadLibrary("Xss", Xss.class);
+        Xss INSTANCE = Native.load("Xss", Xss.class);
 
-        public class XScreenSaverInfo extends Structure {
-            public X11.Window window; /* screen saver window */
-            public int state; /* ScreenSaver{Off,On,Disabled} */
-            public int kind; /* ScreenSaver{Blanked,Internal,External} */
-            public NativeLong til_or_since; /* milliseconds */
-            public NativeLong idle; /* milliseconds */
-            public NativeLong event_mask; /* events */
+        class XScreenSaverInfo extends Structure {
+            public X11.Window window;
+            public int state;
+            public int kind;
+            public NativeLong til_or_since;
+            public NativeLong idle;
+            public NativeLong event_mask;
 
             @Override
             protected List<String> getFieldOrder() {
-                return Arrays.asList(new String[] { "window", "state", "kind", "til_or_since",
-                        "idle", "event_mask" });
+                return Arrays.asList("window", "state", "kind", "til_or_since",
+                        "idle", "event_mask");
             }
         }
 

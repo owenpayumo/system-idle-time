@@ -8,14 +8,12 @@ import com.coffee.platform.IdleTimeUtils;
 
 public class MacIdleTimeUtils extends IdleTimeUtils {
     public final int kCGAnyInputEventType = ~0;
-    public final int kCGEventSourceStatePrivate = -1;
-    public final int kCGEventSourceStateCombinedSessionState = 0;
     public final int kCGEventSourceStateHIDSystemState = 1;
 
     public interface CoreGraphics extends Library {
-        CoreGraphics INSTANCE = (CoreGraphics) Native.loadLibrary("CoreGraphics", CoreGraphics.class);
+        CoreGraphics INSTANCE = Native.load("CoreGraphics", CoreGraphics.class);
 
-        public double CGEventSourceSecondsSinceLastEventType(int source, int eventType);
+        double CGEventSourceSecondsSinceLastEventType(int source, int eventType);
     }
 
     public long getIdleTimeMillis() {
