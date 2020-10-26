@@ -1,3 +1,5 @@
 # system-idle-time
-code for fetching system idle time in seconds using java.
-useful for monitoring user activity.
+
+Code for fetching system idle time in seconds using java.
+
+OS supported: linux, mac and windows
